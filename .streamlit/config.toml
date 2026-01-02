@@ -1,0 +1,40 @@
+# Streamlit configuration for production hosting
+# Documentation: https://docs.streamlit.io/library/advanced-features/configuration
+
+[server]
+# Run in headless mode (no Chrome popup)
+headless = true
+# Bind to all interfaces for container/cloud hosting
+address = "0.0.0.0"
+# Default port; can be overridden by environment variables or runtime args
+port = 8501
+# Security settings appropriate for production behind a reverse proxy
+enableCORS = true
+enableXsrfProtection = true
+# Stable file watching inside containers
+fileWatcherType = "none"
+# Automatically rerun on file save during development (safe to keep enabled)
+runOnSave = false
+# Increase upload size if needed (in MB)
+maxUploadSize = 256
+# Base URL path if served behind a subpath (leave empty for root)
+baseUrlPath = ""
+
+[browser]
+# Disable usage stats collection in production
+gatherUsageStats = false
+# Optional: set public URL if served behind a proxy; leave unset for auto-detection
+# serverAddress = "your.public.domain"
+# serverPort = 8501
+
+[logger]
+# Use 'info' in production; switch to 'debug' during troubleshooting
+level = "info"
+
+[theme]
+# Neutral theme suitable for financial dashboards
+primaryColor = "#2E86C1"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F7FA"
+textColor = "#1C2833"
+font = "sans serif"

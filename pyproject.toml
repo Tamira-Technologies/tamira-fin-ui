@@ -1,0 +1,64 @@
+[project]
+name = "tamira-fin-ui"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Pratham", email = "mpratham2002@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "openbb>=4.1.3",
+    "torch",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "scikit-learn",
+    "yfinance",
+    "streamlit",
+    "plotly",
+    "pydantic>=2",
+    "pydantic-settings>=2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+    "basedpyright",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+
+[tool.pyright]
+typeCheckingMode = "strict"
+pythonVersion = "3.12"
+venvPath = "."
+venv = ".venv"
+include = ["src", "tests"]
+reportMissingTypeStubs = false
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.uv]
+python = "3.12"
+
+[tool.uv.scripts]
+train = "python -m tamira_fin_ui.lstm_main_code"
+forecast-multi = "python -c 'import tamira_fin_ui.lstm_main_code as m; print(m.predict_future_close_prices(ticker=\"JPM\", start_date=\"2000-01-01\"))'"
+dashboard = "streamlit run src/tamira_fin_ui/dashboard_app.py"
+test = "pytest"
+lint = "ruff check ."
+format = "ruff format ."
+typecheck = "basedpyright"
