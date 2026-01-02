@@ -18,10 +18,10 @@ jobs:
 
       - name: Push to personal mirror
         env:
-          PERSONAL_REPO_URL: https://github.com/Pratham117/tamira-fin-ui-public.git
+          PERSONAL_REPO_URL: https://github.com/Pratham117/tamira-fin-ui-public
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_REPO_PAT }}
         run: |
           
-          git remote add personal "https://${PERSONAL_TOKEN}@github.com/Pratham117/tamira-fin-ui-public.git"
+          git remote add personal "https://${PERSONAL_TOKEN}@github.com/Pratham117/tamira-fin-ui-public"
           
           git push personal main --force
