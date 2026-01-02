@@ -2,7 +2,7 @@ name: Mirror to personal repo
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   mirror:
