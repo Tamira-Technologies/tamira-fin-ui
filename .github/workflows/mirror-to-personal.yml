@@ -1,0 +1,27 @@
+name: Mirror to personal repo
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout org repo
+        uses: actions/checkout@v4
+
+      - name: Setup Git identity
+        run: |
+          git config user.name "Org Mirror Bot"
+          git config user.email "bot@example.com"
+
+      - name: Push to personal mirror
+        env:
+          PERSONAL_REPO_URL: https://github.com/Pratham117/tamira-fin-ui-public.git
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_REPO_PAT }}
+        run: |
+          
+          git remote add personal "https://${PERSONAL_TOKEN}@github.com/<your-username>/tamira-fin-ui-public.git"
+          
+          git push personal main --force
