@@ -1,0 +1,11 @@
+openbb>=4.1.3
+torch
+numpy
+pandas
+matplotlib
+scikit-learn
+yfinance
+streamlit
+plotly
+pydantic>=2
+pydantic-settings>=2
